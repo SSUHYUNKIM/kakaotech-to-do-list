@@ -14,13 +14,13 @@ interface TodoItemProps {
 
 const TodoItem: React.FC<TodoItemProps> = ({ todo, toggleComplete, removeTodo }) => {
     return (
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div className="todo-item">
             <input
-                type="checkbox"ㄹ
+                type="checkbox"
                 checked={todo.completed}
                 onChange={() => toggleComplete(todo.id)}
             />
-            <span style={{ textDecoration: todo.completed ? 'line-through' : 'none', flexGrow: 1 }}>
+            <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
         {todo.text}
       </span>
             <button onClick={() => removeTodo(todo.id)}>Delete</button>

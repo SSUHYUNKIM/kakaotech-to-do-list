@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
+import './App.css';
 
 interface Todo {
   id: number;
@@ -33,11 +34,11 @@ const App: React.FC = () => {
   };
 
   return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div className="app-container">
         <h1>Todo List</h1>
         <TodoInput addTodo={addTodo} />
         <TodoList todos={todos} toggleComplete={toggleComplete} removeTodo={removeTodo} />
-        </div>
+      </div>
   );
 };
 
