@@ -33,11 +33,11 @@ const App: React.FC = () => {
   };
 
   return (
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <h1>Todo List</h1>
         <TodoInput addTodo={addTodo} />
         <TodoList todos={todos} toggleComplete={toggleComplete} removeTodo={removeTodo} />
-      </div>
+        </div>
   );
 };
 

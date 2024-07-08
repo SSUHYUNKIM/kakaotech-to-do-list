@@ -14,9 +14,9 @@ interface TodoItemProps {
 
 const TodoItem: React.FC<TodoItemProps> = ({ todo, toggleComplete, removeTodo }) => {
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <span onClick={() => toggleComplete(todo.id)} style={{ textDecoration: todo.completed ? 'line-through' : '' }}></span>
-        <button onClick={() => removeTodo(todo.id)}>X</button>
+        <div style={{textDecoration: todo.completed ? 'line-through' : 'none'}}>
+            <span onClick={() => toggleComplete(todo.id)}>{todo.text}</span>
+            <button onClick={() => removeTodo(todo.id)}>X</button>
         </div>
     );
 };
