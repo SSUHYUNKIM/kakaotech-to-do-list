@@ -13,10 +13,12 @@ const App: React.FC = () => {
 
   const addTodo = (text: string) => {
     const newTodo: Todo = {
-      id: Date.now(), text, completed: false
+      id: Date.now(),
+      text,
+      completed: false
     };
     setTodos([...todos, newTodo]);
-  }
+  };
 
   const toggleComplete = (id: number) => {
     setTodos(
@@ -31,11 +33,11 @@ const App: React.FC = () => {
   };
 
   return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div>
         <h1>Todo List</h1>
         <TodoInput addTodo={addTodo} />
         <TodoList todos={todos} toggleComplete={toggleComplete} removeTodo={removeTodo} />
-        </div>
+      </div>
   );
 };
 
