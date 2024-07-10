@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface Todo {
     id: number;
@@ -10,9 +10,31 @@ interface TodoItemProps {
     todo: Todo;
     toggleComplete: (id: number) => void;
     removeTodo: (id: number) => void;
+    editTodo: (id: number, newText: string) => void;
 }
 
-const TodoItem: React.FC<TodoItemProps> = ({ todo, toggleComplete, removeTodo }) => {
+const TodoItem: React.FC<TodoItemProps> = ({ todo, toggleComplete, removeTodo, editTodo }) => {
+    const [isEditing, setIsEditing] = useState(false);
+    const [newText, setNewText] = useState(todo.text);
+
+    const handleEdit = () => {
+        setIsEditing(true);
+    };
+
+    const handleSave = () => {
+        editTodo(todo.id, newText);
+        setIsEditing(false);
+    };
+
+    const handleCancel = () => {
+        setIsEditing(false);
+        setNewText(todo.text);
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setNewText(e.target.value);
+    };
+
     return (
         <div className="todo-item">
             <input
@@ -20,10 +42,28 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, toggleComplete, removeTodo })
                 checked={todo.completed}
                 onChange={() => toggleComplete(todo.id)}
             />
-            <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
-        {todo.text}
-      </span>
-            <button onClick={() => removeTodo(todo.id)}>Delete</button>
+            {isEditing ? (
+                <input
+                    type="text"
+                    value={newText}
+                    onChange={handleChange}
+                />
+            ) : (
+                <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+          {todo.text}
+        </span>
+            )}
+            {isEditing ? (
+                <>
+                    <button onClick={handleSave}>Save</button>
+                    <button onClick={handleCancel}>Cancel</button>
+                </>
+            ) : (
+                <>
+                    <button onClick={handleEdit}>Edit</button>
+                    <button onClick={() => removeTodo(todo.id)}>Delete</button>
+                </>
+            )}
         </div>
     );
 };

@@ -11,16 +11,23 @@ interface TodoListProps {
     todos: Todo[];
     toggleComplete: (id: number) => void;
     removeTodo: (id: number) => void;
+    editTodo: (id: number, newText: string) => void; // editTodo 함수 추가
 }
 
-const TodoList: React.FC<TodoListProps> = ({ todos, toggleComplete, removeTodo }) => {
+const TodoList: React.FC<TodoListProps> = ({ todos, toggleComplete, removeTodo, editTodo }) => {
     return (
-        <ul>
-            {todos.map(todo => (
-                <TodoItem key={todo.id} todo={todo} toggleComplete={toggleComplete} removeTodo={removeTodo} />
+        <div>
+            {todos.map((todo) => (
+                <TodoItem
+                    key={todo.id}
+                    todo={todo}
+                    toggleComplete={toggleComplete}
+                    removeTodo={removeTodo}
+                    editTodo={editTodo} // editTodo 함수 전달
+                />
             ))}
-        </ul>
+        </div>
     );
-}
+};
 
 export default TodoList;

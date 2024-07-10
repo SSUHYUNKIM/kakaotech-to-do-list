@@ -36,6 +36,14 @@ const App: React.FC = () => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  const editTodo = (id: number, newText: string) => {
+    setTodos(
+        todos.map((todo) =>
+            todo.id === id ? { ...todo, text: newText } : todo
+        )
+    );
+  };
+
   const removeAllTodos = () => {
     setTodos([]);
   };
@@ -56,7 +64,7 @@ const App: React.FC = () => {
       <div className="app-container">
         <h1>Todo List</h1>
         <TodoInput addTodo={addTodo}/>
-        <TodoList todos={filteredTodos} toggleComplete={toggleComplete} removeTodo={removeTodo} />
+        <TodoList todos={filteredTodos} toggleComplete={toggleComplete} removeTodo={removeTodo} editTodo={editTodo} />
         <button className="delete-all-button" onClick={removeAllTodos}>전체 삭제</button>
         <p className="incomplete-count">남은 할 일: {incompleteCount}</p>
         <div className="filters">
