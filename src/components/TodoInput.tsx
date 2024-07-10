@@ -16,6 +16,8 @@ const TodoInput: React.FC<TodoInputProps> = ({ addTodo }) => {
         if (inputValue.trim()) {
             addTodo(inputValue);
             setInputValue('');
+        } else {
+            alert('할 일을 입력하세요.');
         }
     };
 
