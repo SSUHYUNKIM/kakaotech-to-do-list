@@ -11,8 +11,18 @@ interface Todo {
 
 type Filter = 'all' | 'active' | 'completed';
 
+const loadTodosFromLocalStorage = (): Todo[] => {
+  const storedTodos = localStorage.getItem('todos');
+  return storedTodos ? JSON.parse(storedTodos) : [];
+};
+
+// 로컬 저장소에 할 일 목록을 저장하는 함수
+const saveTodosToLocalStorage = (todos: Todo[]) => {
+  localStorage.setItem('todos', JSON.stringify(todos));
+};
+
 const App: React.FC = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<Todo[]>(loadTodosFromLocalStorage());
   const [filter, setFilter] = useState<Filter>('all');
 
   const addTodo = (text: string) => {
@@ -21,31 +31,36 @@ const App: React.FC = () => {
       text,
       completed: false
     };
-    setTodos([...todos, newTodo]);
+    const updatedTodos = [...todos, newTodo];
+    setTodos(updatedTodos);
+    saveTodosToLocalStorage(updatedTodos);
   };
 
   const toggleComplete = (id: number) => {
-    setTodos(
-        todos.map((todo) =>
-          todo.id === id? {...todo, completed: !todo.completed} : todo
-      )
+    const updatedTodos = todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
     );
+    setTodos(updatedTodos);
+    saveTodosToLocalStorage(updatedTodos);
   };
 
   const removeTodo = (id: number) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+    saveTodosToLocalStorage(updatedTodos);
   };
 
   const editTodo = (id: number, newText: string) => {
-    setTodos(
-        todos.map((todo) =>
-            todo.id === id ? { ...todo, text: newText } : todo
-        )
+    const updatedTodos = todos.map((todo) =>
+        todo.id === id ? { ...todo, text: newText } : todo
     );
+    setTodos(updatedTodos);
+    saveTodosToLocalStorage(updatedTodos);
   };
 
   const removeAllTodos = () => {
     setTodos([]);
+    saveTodosToLocalStorage([]);
   };
 
   const incompleteCount = todos.filter(todo => !todo.completed).length;

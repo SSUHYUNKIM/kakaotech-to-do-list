@@ -55,13 +55,13 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, toggleComplete, removeTodo, e
             )}
             {isEditing ? (
                 <>
-                    <button onClick={handleSave}>Save</button>
-                    <button onClick={handleCancel}>Cancel</button>
+                    <button onClick={handleSave}>저장</button>
+                    <button onClick={handleCancel}>취소</button>
                 </>
             ) : (
                 <>
-                    <button onClick={handleEdit}>Edit</button>
-                    <button onClick={() => removeTodo(todo.id)}>Delete</button>
+                    <button onClick={handleEdit}>수정</button>
+                    <button onClick={() => removeTodo(todo.id)}>삭제</button>
                 </>
             )}
         </div>
