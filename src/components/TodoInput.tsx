@@ -21,8 +21,8 @@ const TodoInput: React.FC<TodoInputProps> = ({ addTodo }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" value={inputValue} onChange={handleChange} placeholder="Enter a new task"/>
-            <button type="submit">Add</button>
+            <input type="text" value={inputValue} onChange={handleChange} placeholder="할 일을 작성해주세요!"/>
+            <button type="submit">추가</button>
         </form>
     );
 };
