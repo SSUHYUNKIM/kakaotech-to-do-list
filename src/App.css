@@ -66,6 +66,8 @@ button:hover {
 }
 .icon-button:hover {
   background: #c9c6c6;
+  cursor: pointer;
+  border-radius: 50%;
 }
 input[type="checkbox"] {
   transform: scale(1.5);
