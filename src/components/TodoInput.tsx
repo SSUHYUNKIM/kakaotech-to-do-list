@@ -11,7 +11,7 @@ const TodoInput: React.FC<TodoInputProps> = ({ addTodo }) => {
         setInputValue(e.target.value);
     };
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (inputValue.trim()) {
             addTodo(inputValue);
@@ -23,8 +23,13 @@ const TodoInput: React.FC<TodoInputProps> = ({ addTodo }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" value={inputValue} onChange={handleChange} placeholder="할 일을 작성해주세요!"/>
-            <button type="submit">추가</button>
+            <input
+                type="text"
+                value={inputValue}
+                onChange={handleChange}
+                placeholder="Enter a new task"
+            />
+            <button type="submit">Add</button>
         </form>
     );
 };
