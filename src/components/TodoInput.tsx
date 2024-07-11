@@ -1,4 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
+import './TodoInput.css';
 
 interface TodoInputProps {
     addTodo: (text: string) => void;

@@ -1,0 +1,47 @@
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    margin-bottom: 10px;
+}
+.delete-all-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.delete-all-button:hover {
+    background-color: #c82333;
+}
+.incomplete-count {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #333;
+}
+.filters {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.filter-button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #ddd;
+    color: black;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+.filter-button.active {
+    background-color: #28a745;
+    color: white;
+}
+.filter-button:hover {
+    background-color: #ccc;
+}
