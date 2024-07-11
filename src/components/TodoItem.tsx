@@ -36,7 +36,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, toggleComplete, removeTodo, e
     };
 
     return (
-        <div className="todo-item">
+        <article className="todo-item">
             <input
                 type="checkbox"
                 checked={todo.completed}
@@ -55,16 +55,16 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, toggleComplete, removeTodo, e
             )}
             {isEditing ? (
                 <>
-                    <button className="icon-button" onClick={handleSave}>✔️</button>
-                    <button className="icon-button" onClick={handleCancel}>❌</button>
+                    <button className="icon-button save-button" onClick={handleSave}>✔️</button>
+                    <button className="icon-button cancel-button" onClick={handleCancel}>❌</button>
                 </>
             ) : (
                 <>
-                    <button className="icon-button" onClick={handleEdit}>✏️</button>
-                    <button className="icon-button" onClick={() => removeTodo(todo.id)}>❌</button>
+                    <button className="icon-button edit-button" onClick={handleEdit}>✏️</button>
+                    <button className="icon-button delete-button" onClick={() => removeTodo(todo.id)}>❌</button>
                 </>
             )}
-        </div>
+        </article>
     );
 };
 

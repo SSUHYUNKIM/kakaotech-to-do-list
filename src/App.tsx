@@ -84,23 +84,44 @@ const App: React.FC = () => {
   });
 
   return (
-      <div className="app-container">
-        <h1>Todo List</h1>
-        <TodoInput addTodo={addTodo}/>
-        <TodoList todos={filteredTodos} toggleComplete={toggleComplete} removeTodo={removeTodo} editTodo={editTodo} />
-        <button className="delete-all-button" onClick={removeAllTodos}>전체 삭제</button>
-        <p className="incomplete-count">남은 할 일: {incompleteCount}</p>
-        <div className="filters">
-          <button className={`filter-button ${filter === 'all' ? 'active' : ''}`} onClick={() => setFilter('all')}>전체 할 일
-          </button>
-          <button className={`filter-button ${filter === 'active' ? 'active' : ''}`}
-                  onClick={() => setFilter('active')}>해야 할 일
-          </button>
-          <button className={`filter-button ${filter === 'completed' ? 'active' : ''}`}
-                  onClick={() => setFilter('completed')}>완료한 일
-          </button>
-        </div>
-      </div>
+      <main className="app-container">
+        <header>
+          <h1>Todo List</h1>
+        </header>
+        <section>
+          <TodoInput addTodo={addTodo} />
+          <TodoList
+              todos={filteredTodos}
+              toggleComplete={toggleComplete}
+              removeTodo={removeTodo}
+              editTodo={editTodo}
+          />
+          <button className="delete-all-button" onClick={removeAllTodos}>전체 삭제</button>
+        </section>
+        <footer>
+          <p className="incomplete-count">남은 할 일: {incompleteCount}</p>
+          <nav className="filters">
+            <button
+                className={`filter-button ${filter === 'all' ? 'active' : ''}`}
+                onClick={() => setFilter('all')}
+            >
+              전체 할 일
+            </button>
+            <button
+                className={`filter-button ${filter === 'active' ? 'active' : ''}`}
+                onClick={() => setFilter('active')}
+            >
+              해야 할 일
+            </button>
+            <button
+                className={`filter-button ${filter === 'completed' ? 'active' : ''}`}
+                onClick={() => setFilter('completed')}
+            >
+              완료한 일
+            </button>
+          </nav>
+        </footer>
+      </main>
   );
 };
 
