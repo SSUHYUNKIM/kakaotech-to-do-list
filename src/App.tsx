@@ -13,7 +13,15 @@ type Filter = 'all' | 'active' | 'completed';
 
 const loadTodosFromLocalStorage = (): Todo[] => {
   const storedTodos = localStorage.getItem('todos');
-  return storedTodos ? JSON.parse(storedTodos) : [];
+  if (storedTodos) {
+    try {
+      return JSON.parse(storedTodos);
+    } catch (error) {
+      console.error("Failed to parse todos from localStorage:", error);
+      return [];
+    }
+  }
+  return [];
 };
 
 // 로컬 저장소에 할 일 목록을 저장하는 함수
