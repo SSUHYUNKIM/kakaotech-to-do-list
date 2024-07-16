@@ -13,5 +13,5 @@
 - 전체 할 일 / 해야 할 일/ 완료한 일 확인
 
 ## 🎬 시연 영상
-![시연 영상](https://github.com/SSUHYUNKIM/todo-react-app/blob/main/Todo%20List%20Gif.gif?raw=true)
+![시연 영상](https://github.com/SSUHYUNKIM/to-do-list/blob/main/Todo%20List%20%EB%A7%8C%EB%93%A4%EA%B8%B0.gif?raw=true)
 
